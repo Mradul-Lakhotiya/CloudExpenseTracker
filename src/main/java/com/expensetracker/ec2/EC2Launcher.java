@@ -19,6 +19,7 @@ import software.amazon.awssdk.services.ec2.model.Instance;
 public class EC2Launcher {
 
 	public static void launchInstance() {
+		// TODO: The Region is Hard Coded rn so mke it gentralized
 		Region region = Region.EU_NORTH_1;
 		Ec2Client ec2 = Ec2Client.builder().region(region).build();
 		SsmClient ssm = SsmClient.builder().region(region).build();

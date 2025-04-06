@@ -7,7 +7,7 @@ import software.amazon.awssdk.services.dynamodb.model.*;
 import java.util.*;
 
 public class ExpenseService {
-    private final String tableName = "ExpenseTest"; // change if needed
+    private final String TABLE_NAME = "ExpenseTest"; // change if needed
     private final DynamoDbClient ddb;
 
     public ExpenseService(DynamoDbClient client) {
@@ -24,7 +24,7 @@ public class ExpenseService {
         item.put("date", AttributeValue.fromS(expense.getDate()));
 
         PutItemRequest request = PutItemRequest.builder()
-                .tableName(tableName)
+                .tableName(TABLE_NAME)
                 .item(item)
                 .build();
 
@@ -35,7 +35,7 @@ public class ExpenseService {
     // 📄 Get Expense by ID
     public Expense getExpense(String id) {
         GetItemRequest request = GetItemRequest.builder()
-                .tableName(tableName)
+                .tableName(TABLE_NAME)
                 .key(Map.of("id", AttributeValue.fromS(id)))
                 .build();
 
@@ -57,7 +57,7 @@ public class ExpenseService {
     // 🗑️ Delete Expense
     public void deleteExpense(String id) {
         DeleteItemRequest request = DeleteItemRequest.builder()
-                .tableName(tableName)
+                .tableName(TABLE_NAME)
                 .key(Map.of("id", AttributeValue.fromS(id)))
                 .build();
 
@@ -86,7 +86,7 @@ public class ExpenseService {
 
     public List<Expense> scanExpenses() {
         ScanRequest scanRequest = ScanRequest.builder()
-            .tableName(tableName)
+            .tableName(TABLE_NAME)
             .build();
     
         ScanResponse response = ddb.scan(scanRequest);

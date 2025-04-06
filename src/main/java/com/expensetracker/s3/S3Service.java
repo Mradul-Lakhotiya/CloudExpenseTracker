@@ -29,6 +29,7 @@ public class S3Service {
         }
     }
 
+    // TODO: Use Some Kind Of frontend to get the file from user assume it will return the s3 file key 
     public static void uploadLocalFileToS3(S3Client s3, String bucketName, String filePath, String keyName) {
         PutObjectRequest putRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
