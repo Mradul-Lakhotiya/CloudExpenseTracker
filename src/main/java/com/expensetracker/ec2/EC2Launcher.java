@@ -75,5 +75,4 @@ public class EC2Launcher {
 		ec2.close();
 		ssm.close();
 	}
-		
 }
